@@ -3,6 +3,8 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
+import { useHistory } from "react-router-dom";
+
 
 import AuthService from "../services/auth.service";
 
@@ -49,6 +51,7 @@ const vpassword = (value) => {
 const Register = (props) => {
   const form = useRef();
   const checkBtn = useRef();
+  const history = useHistory();
 
   // const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -84,11 +87,11 @@ const Register = (props) => {
       .then
       ( 
         () => {
+            console.log(checkBtn);
             AuthService.login(email, password)
             .then(
               () => {
-                props.history.push("/profile");
-                // window.location.reload();
+                history.push("/profile");
               }
           )
         },
@@ -106,6 +109,14 @@ const Register = (props) => {
       );
     }
   };
+
+  // const checkInfo = (response) => {
+
+  //   const info = response.data.access_token;
+  //   console.log(info);
+
+  // }
+
 
   return (
     <div className="col-md-12">
@@ -156,7 +167,9 @@ const Register = (props) => {
               </div>
 
               <div className="form-group">
-                <button className="btn btn-primary btn-block">Sign Up</button>
+                <button className="btn btn-primary btn-block">
+                SIGN UP
+                </button>
               </div>
             </div>
           )}

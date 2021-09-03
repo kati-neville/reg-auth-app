@@ -1,12 +1,14 @@
-import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AuthService from "../services/auth.service";
 
 const Profile = () => {
     const currentUser = AuthService.getCurrentUser();
+    const history = useHistory();
 
     return (
+        
         <div className="container">
           {currentUser ? (
             <div className="container">
@@ -32,12 +34,7 @@ const Profile = () => {
             </ul>
             </div>
         ):(
-            <div className="navbar-nav ml-auto">
-            <h5>Sorry, you don't have access to this page. Either Login or Register if you don't have an account yet</h5>
-        
-                <Link to={"/login"} className="nav-link">  Login </Link>
-                <Link to={"/register"} className="nav-link"> Sign Up</Link>
-          </div>
+             history.push("/login")
         )}
         </div>
     );

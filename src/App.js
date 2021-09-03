@@ -14,8 +14,8 @@ import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
 
 const App = () => {
-  const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-  const [showAdminBoard, setShowAdminBoard] = useState(false);
+  // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
+  // const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
 
   useEffect(() => {
@@ -45,22 +45,22 @@ const App = () => {
               Home
             </Link>
           </li>
-          
+{/*           
           {showModeratorBoard && (
             <li className="nav-item">
               <Link to={"/mod"} className="nav-link">
                 Moderator Board
               </Link>
             </li>
-          )}
+          )} */}
 
-          {showAdminBoard && (
+          {/* {showAdminBoard && (
             <li className="nav-item">
               <Link to={"/admin"} className="nav-link">
                 Admin Board
               </Link>
             </li>
-          )}
+          )} */}
 
           {currentUser && (
             <li className="nav-item">
@@ -104,12 +104,12 @@ const App = () => {
       <div className="container mt-3">
         <Switch>
           <Route exact path={["/", "/home"]} component={Home} />
-          <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
           <Route exact path="/profile" component={Profile} />
-          <Route path="/user" component={BoardUser} />
+          {/* <Route path="/user" component={BoardUser} />
           <Route path="/mod" component={BoardModerator} />
-          <Route path="/admin" component={BoardAdmin} />
+          <Route path="/admin" component={BoardAdmin} /> */}
         </Switch>
       </div>
     </div>

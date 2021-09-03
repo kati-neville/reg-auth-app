@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
+import { useHistory } from "react-router-dom";
 
 import AuthService from "../services/auth.service";
 
@@ -18,6 +19,7 @@ const required = (value) => {
 const Login = (props) => {
     const form = useRef();
     const checkBtn = useRef();
+    const history = useHistory();
   
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -46,8 +48,8 @@ const Login = (props) => {
         if (checkBtn.current.context._errors.length === 0) {
           AuthService.login(email, password).then(
             () => {
-              props.history.push("/profile");
-              window.location.reload();
+              history.push("/profile");
+  
             },
             (error) => {
                 const resMessage =
@@ -103,7 +105,7 @@ const Login = (props) => {
                     {loading && (
                         <span className="spinner-border spinner-border-sm"></span>
                     )}
-                    <span>Login</span>
+                    Login
                     </button>
                 </div>
                 {message && (
